@@ -3,7 +3,7 @@ package restaurant;
 import java.util.HashMap;
 
 /**
- * Represents a completed order with is ready to be cooked and served
+ * Represents a completed order which is ready to be cooked and served
  * No modifications can be made to the order apart from serving items
  */
 
