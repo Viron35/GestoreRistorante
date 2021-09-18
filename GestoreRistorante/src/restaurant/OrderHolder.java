@@ -9,10 +9,8 @@ import java.util.HashMap;
 
 public class OrderHolder implements Bidimensional {
 	
-	// stores the set of completed and unpaid orders
+	// stores the set of orders
 	private HashMap<Integer, ClosedOrder> orderMap;
-	// reference to the restaurant PaymentHolder
-	// private PaymentHolder thePayments;
 	
 	/**
 	 * Constructs a new OrderHolder object
@@ -82,8 +80,6 @@ public class OrderHolder implements Bidimensional {
 		this.orderMap.get(table).serveItem(name);
 		// checks if order is complete
 		if (this.orderMap.get(table).getRows() == 0) {
-			// double price = this.getOrder(table).getPrice();
-			// this.thePayments.addPayment(table, price);
 			this.orderMap.remove(table);
 		}
 	}
