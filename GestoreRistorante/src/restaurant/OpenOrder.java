@@ -24,6 +24,10 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 		this.holderPayment = holder2; 
 	}
 	
+	/**
+	 * Checks if there are no items in the order
+	 * @return true if the order is empty
+	 */
 	public boolean empty() {
 		if(super.getRows() == 0) {
 			return true;
@@ -59,7 +63,7 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 	}
 	
 	/**
-	 * Clears all attributes and resets the order
+	 * Clears all items and resets the order and the price
 	 * Previous order items and price will be lost
 	 */
 	public void clear() {
@@ -68,17 +72,17 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 	}
 	
 	/**
-	 * Adds the completed order to OrderHolder
+	 * Adds the completed order to OrderHolder and the payment to PaymentHolder
 	 * Clears the OpenOrder
 	 * @param table the ID of the table that ordered
 	 */
 	public void sendOrder(int table) {
-		if (super.getRows() == 0) {
+		if (this.empty()) {
 			throw new IllegalArgumentException("No items in the order");
 		}
 		// adding order for chef
 		holderOrder.addOrder(new ClosedOrder(super.getOrderMap(), super.getPrice()),table);
-		// addind order for cashier
+		// addind payment for cashier
 		this.holderPayment.addPayment(table, super.getPrice());
 		// clearing for next order
 		this.clear();
