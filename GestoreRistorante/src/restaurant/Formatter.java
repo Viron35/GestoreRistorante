@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 /**
  * This class defines static methods for formatting restaurant data
- * The static methods return correctly formatted data
- * Errors are thrown if input is not cannot be formatted 
+ * The methods validate and return formatted data
+ * Errors are thrown if input cannot be formatted 
  */
 
 public class Formatter {
