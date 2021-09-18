@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class Order implements Bidimensional, Priceable {
 	
-	// stores the set ordered items
+	// stores the set of ordered items
 	private HashMap<String, Integer> orderMap;
 	// total price of the order
 	private double price;
