@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * This class is a tool for storing and paying any completed order
+ * This class is a tool for storing and paying for an order
  * Each table has an assigned price representing the cost of their order
  */
 
@@ -30,7 +30,7 @@ public class PaymentHolder implements Bidimensional {
 		}
 		
 		/**
-		 * Gets the number of tables with finished and unpaid orders
+		 * Gets the number of tables with unpaid orders
 		 * @return the number of tables with unpaid orders
 		 */
 		public int getRows() {
@@ -38,7 +38,7 @@ public class PaymentHolder implements Bidimensional {
 		}
 		
 		/**
-		 * Gets all completed and unpaid orders represented by a table number and their cost
+		 * Gets all the unpaid orders represented by a table number and their cost
 		 * @return unpaid orders and their prices as matrix of objects
 		 */
 		public Object[][] getItems() {
@@ -58,13 +58,14 @@ public class PaymentHolder implements Bidimensional {
 		}
 		
 		/**
-		 * Adds a new finished and unpaid order to the set
+		 * Adds a new unpaid order to the set
 		 * @param table the id number of the table
 		 * @param price the price of the order is not negative
 		 */
 		public void addPayment(int table, double price) {
 			if (this.paymentMap.containsKey(table)) {
 				double tmp = this.paymentMap.get(table);
+				// multiple orders from the same table are added up
 				this.paymentMap.replace(table, Formatter.getFormattedPrice(tmp + price));
 			}
 			else {
@@ -99,12 +100,12 @@ public class PaymentHolder implements Bidimensional {
 			// printing receipt 
 			String curPath = (this.path + this.payCount);
 			File file = new File(curPath);
-			this.payCount++;
 			// trying to open file
 			try {
 				// in case file exits
 				PrintWriter writer = new PrintWriter(file);
 				writer.write("RICEVUTA\n\n");
+				writer.write("Num. documento: " + this.payCount + "\n");
 				writer.write("Tavolo: " + table + "\n");
 				writer.write("Prezzo: " + this.getPayment(table) + "\n");
 				writer.close();
@@ -113,6 +114,7 @@ public class PaymentHolder implements Bidimensional {
 				// in case does not exist
 			    e.printStackTrace();
 			}
+			this.payCount++;
 			this.paymentMap.remove(table);
 		}
 
