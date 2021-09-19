@@ -15,7 +15,7 @@ public class ClosedOrder extends Order implements Bidimensional, Priceable {
 	 * @param map the map with all order items is not empty
 	 * @param price the price of the order is a non negative amount
 	 */
-	public ClosedOrder(HashMap<String, Integer> map, double price) {
+	public ClosedOrder(HashMap<String, Integer> map, double price) throws IllegalArgumentException {
 		super(map,price);
 	}
 	
@@ -25,7 +25,7 @@ public class ClosedOrder extends Order implements Bidimensional, Priceable {
 	 * Serves a given item from the order
 	 * @param name the name of an item 
 	 */
-	public void serveItem(String name) {
+	public void serveItem(String name) throws IllegalArgumentException {
 		super.removeItem(name, 1);
 	}
 	
