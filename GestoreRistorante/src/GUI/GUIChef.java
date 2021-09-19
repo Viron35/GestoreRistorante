@@ -490,7 +490,7 @@ public class GUIChef extends JFrame{
      * @throws IOException
      */
     private JScrollPane reloadMenu() throws IOException {
-    	String[] column = new String[] {"Item", "Price (�)"};
+    	String[] column = new String[] {"Item", "Price (€)"};
     	
     	table = new DynamicJTable(this.menu, column);
     	table.setShowGrid(false);
