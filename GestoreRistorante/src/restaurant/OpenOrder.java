@@ -17,7 +17,7 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 	 * @param menu the menu for the restaurant
 	 * @param holder the order holder for the restaurant
 	 */
-	public OpenOrder(Menu menu, OrderHolder holder1, PaymentHolder holder2) throws IllegalArgumentException {
+	public OpenOrder(Menu menu, OrderHolder holder1, PaymentHolder holder2) {
 		super(new HashMap<String, Integer>(), 0.0);
 		this.menu = menu;
 		this.holderOrder = holder1;
@@ -41,7 +41,7 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 	 * @param name the name of an item in the menu
 	 * @param quantity the quantity of an item is at least 1
 	 */
-	public void addItem(String name, int quantity) throws IllegalArgumentException {
+	public void addItem(String name, int quantity) {
 		double price = this.menu.getItemPrice(name);
 		super.addItem(name, quantity);
 		price *= quantity;
@@ -54,7 +54,7 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 	 * @param name the name of an item in the menu
 	 * @param quantity the quantity to remove is not less than the quantity of the item
 	 */
-	public void removeItem(String name, int quantity) throws IllegalArgumentException {
+	public void removeItem(String name, int quantity) {
 		double price = this.menu.getItemPrice(name);
 		super.removeItem(name, quantity);
 		price *= quantity;
@@ -76,7 +76,7 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 	 * Clears the OpenOrder
 	 * @param table the ID of the table that ordered
 	 */
-	public void sendOrder(int table) throws IllegalArgumentException {
+	public void sendOrder(int table) {
 		if (this.empty()) {
 			throw new IllegalArgumentException("No items in the order");
 		}
