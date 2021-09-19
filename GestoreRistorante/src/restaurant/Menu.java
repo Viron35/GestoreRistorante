@@ -134,7 +134,7 @@ public class Menu implements Bidimensional {
 	 * @param name the name of a given item
 	 * @return the price of a given item
 	 */
-	public double getItemPrice(String name) {
+	public double getItemPrice(String name) throws IllegalArgumentException {
 		if (! this.menuMap.containsKey(name)) {
 			throw new IllegalArgumentException("Item does not exist");
 		}
@@ -146,7 +146,7 @@ public class Menu implements Bidimensional {
 	 * @param name the name of an item not on the menu
 	 * @param price the price of the item is a non negative amount
 	 */
-	public void addItem(String name, double price) {
+	public void addItem(String name, double price) throws IllegalArgumentException {
 		if (this.menuMap.containsKey(name)) {
 			throw new IllegalArgumentException("Item allready exists");
 		}
@@ -158,7 +158,7 @@ public class Menu implements Bidimensional {
 	 * @param name the name of the item on the menu
 	 * @param price the price of the item is a non negative amount
 	 */
-	public void replaceItem(String name, double price) {
+	public void replaceItem(String name, double price) throws IllegalArgumentException {
 		if (! this.menuMap.containsKey(name)) {
 			throw new IllegalArgumentException("Item does not exist");
 		}
@@ -169,7 +169,7 @@ public class Menu implements Bidimensional {
 	 * Removes an item from the menu
 	 * @param name the name of the item on the menu
 	 */
-	public void removeItem(String name) {
+	public void removeItem(String name) throws IllegalArgumentException {
 		if (!this.menuMap.containsKey(name)) {
 			throw new IllegalArgumentException("Item does not exist");
 		}
