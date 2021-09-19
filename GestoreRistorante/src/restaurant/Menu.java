@@ -46,44 +46,40 @@ public class Menu implements Bidimensional {
 		Double itemPrice;
 		File file = new File(this.path);
 		// trying to open file
-		if(file.exists()) {
-			try {
-				// in case file exits
-				Scanner stream = new Scanner(file);
-				while (stream.hasNext()) {
-					line = stream.next();
-					menuItem = line.split(",");
-					// trying to access data
-					try {
-						// in case two CS values found
-						if (this.menuMap.containsKey(menuItem[0])) {
-							// in case of repeating item names
-							throw new RuntimeException("Repeating value " + menuItem[0]);
-						}
-						// trying to insert data into map
-						try {
-							// in case price is in valid format
-							itemPrice = Double.parseDouble(menuItem[1]);
-							this.menuMap.put(menuItem[0], Formatter.getFormattedPrice(itemPrice));
-						}
-						catch (NumberFormatException e) {
-							// in case price is not in valid format
-							e.printStackTrace();
-						}
+		try {
+			// in case file exits
+			Scanner stream = new Scanner(file);
+			while (stream.hasNext()) {
+				line = stream.next();
+				menuItem = line.split(",");
+				// trying to access data
+				try {
+					// in case two CS values found
+					if (this.menuMap.containsKey(menuItem[0])) {
+						// in case of repeating item names
+						throw new RuntimeException("Repeating value " + menuItem[0]);
 					}
-					catch (ArrayIndexOutOfBoundsException e) {
-						// in case  two CS values not found
+					// trying to insert data into map
+					try {
+						// in case price is in valid format
+						itemPrice = Double.parseDouble(menuItem[1]);
+						this.menuMap.put(menuItem[0], Formatter.getFormattedPrice(itemPrice));
+					}
+					catch (NumberFormatException e) {
+						// in case price is not in valid format
 						e.printStackTrace();
 					}
 				}
-				stream.close();
-			} 
-			catch (FileNotFoundException e) {
-				// in case file does not exist
-				e.printStackTrace();
+				catch (ArrayIndexOutOfBoundsException e) {
+					// in case  two CS values not found
+					e.printStackTrace();
+				}
 			}
-		}else {
-			file.createNewFile();
+			stream.close();
+		} 
+		catch (FileNotFoundException e) {
+			// in case file does not exist
+			e.printStackTrace();
 		}
 	}
 	
