@@ -50,7 +50,7 @@ public class OrderHolder implements Bidimensional {
 	 * Gets the Order of a given table
 	 * @return the Order of a given table
 	 */
-	public Order getOrder(int table) {
+	public Order getOrder(int table) throws IllegalArgumentException {
 		if (!this.orderMap.containsKey(table)) {
 			throw new IllegalArgumentException("No such table");
 		}
@@ -61,7 +61,7 @@ public class OrderHolder implements Bidimensional {
 	 * Adds a new order to the set
 	 * @param table the id number of the table
 	 */
-	public void addOrder(ClosedOrder order, int table) {
+	public void addOrder(ClosedOrder order, int table) throws IllegalArgumentException {
 		if (this.orderMap.containsKey(table)) {
 			throw new IllegalArgumentException("Table has allready ordered");
 		}
@@ -73,7 +73,7 @@ public class OrderHolder implements Bidimensional {
 	 * @param table the id number of the table in the orders
 	 * @param name the name of an item in the given order
 	 */
-	public void serveItem(int table, String name) {
+	public void serveItem(int table, String name) throws IllegalArgumentException {
 		if (!this.orderMap.containsKey(table)) {
 			throw new IllegalArgumentException("No such table");
 		}
