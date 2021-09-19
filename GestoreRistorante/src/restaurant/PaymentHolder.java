@@ -98,7 +98,7 @@ public class PaymentHolder implements Bidimensional {
 				throw new IllegalArgumentException("This table has no outsanding payments");
 			}
 			// printing receipt 
-			String curPath = (this.path + this.payCount);
+			String curPath = (this.path + this.payCount + ".txt");
 			File file = new File(curPath);
 			// trying to open file
 			try {

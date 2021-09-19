@@ -15,7 +15,7 @@ public class Main {
 	private static String MENU = "resources/menu";
 	
 	// Set SCONTRINI to the path of the receipts folder
-	private static String RECEIPTS = "resources/receipts/";
+	private static String RECEIPTS = "resources/receipts/nr";
 	
 	/**
 	 * Starts running GestoreRistorante

@@ -1,0 +1,5 @@
+RICEVUTA
+
+Num. documento: 2
+Tavolo: 2
+Prezzo: 6.0
