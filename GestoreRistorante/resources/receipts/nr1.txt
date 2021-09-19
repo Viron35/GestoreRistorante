@@ -1,5 +1,0 @@
-RICEVUTA
-
-Num. documento: 1
-Tavolo: 1
-Prezzo: 3.0
