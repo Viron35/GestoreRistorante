@@ -16,7 +16,7 @@ public class Formatter {
 	 * @param price the price is a non negative amount
 	 * @return the price rounded down to 2 decimal places
 	 */
-	static double getFormattedPrice(double price) throws IllegalArgumentException {
+	static double getFormattedPrice(double price) {
 		if (price < 0.0) {
 			throw new IllegalArgumentException("Negative price");
 		}
@@ -29,7 +29,7 @@ public class Formatter {
 	 * @param quantity the quantity is a positive integer
 	 * @return the quantity
 	 */
-	static int getFormattedQuantity(int quantity) throws IllegalArgumentException {
+	static int getFormattedQuantity(int quantity) {
 		if (quantity < 1) {
 			throw new IllegalArgumentException("Non positive quantity");
 		}
