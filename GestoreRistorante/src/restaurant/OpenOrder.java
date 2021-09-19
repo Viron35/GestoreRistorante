@@ -85,6 +85,7 @@ public class OpenOrder extends Order implements Bidimensional, Priceable {
 		// addind payment for cashier
 		this.holderPayment.addPayment(table, super.getPrice());
 		this.holderPayment.addOrder(super.getOrderMap());
+		this.holderPayment.addMenu(menu);
 		// clearing for next order
 		this.clear();
 	}

@@ -20,6 +20,8 @@ public class PaymentHolder implements Bidimensional {
 		// keeps count of receipts
 		private int payCount;
 		
+		private Menu menu;
+		
 		private HashMap<String, Integer> orderMap;
 		
 		/**
@@ -102,6 +104,7 @@ public class PaymentHolder implements Bidimensional {
 			// printing receipt 
 			String curPath = (this.path + this.payCount + ".txt");
 			File file = new File(curPath);
+			
 			// trying to open file
 			try {
 				// in case file exits
@@ -109,8 +112,9 @@ public class PaymentHolder implements Bidimensional {
 				writer.write("RICEVUTA\n\n");
 				writer.write("Num. documento: " + this.payCount + "\n");
 				writer.write("Tavolo: " + table + "\n");
-				for(Integer quantity: orderMap.values()){
-		            writer.write(orderMap.get(quantity) + " : " + quantity);
+				for(String key: orderMap.keySet()){
+		            writer.write(key + " x " + orderMap.get(key)+ " = " + (menu.getItemPrice(key)*orderMap.get(key))+ "\n");}
+			
 				writer.write("Prezzo: " + this.getPayment(table) + "\n");
 				
 
@@ -127,5 +131,10 @@ public class PaymentHolder implements Bidimensional {
 		
 		public void addOrder(HashMap<String, Integer> orderMap2) {
 			this.orderMap = orderMap2;
+		}
+		
+		public void addMenu(Menu menu) {
+			this.menu = menu;
 		}}
+		
 
