@@ -250,6 +250,12 @@ public class GUIChef extends JFrame{
 					JOptionPane.showMessageDialog(null, "Use only numbers and one comma, " + itemPriceField.getText() + " is not a valid number");
 					itemPriceField.setText("Item price");
 					itemPriceField.setForeground(Color.GRAY);
+				} catch (IllegalArgumentException e1) {
+					JOptionPane.showMessageDialog(null, "This item alredy exists");
+					itemNameField.setText("Item name");
+					itemNameField.setForeground(Color.GRAY);
+					itemPriceField.setText("Item price");
+					itemPriceField.setForeground(Color.GRAY);
 				}
             }
         });
@@ -490,7 +496,7 @@ public class GUIChef extends JFrame{
      * @throws IOException
      */
     private JScrollPane reloadMenu() throws IOException {
-    	String[] column = new String[] {"Item", "Price (â‚¬)"};
+    	String[] column = new String[] {"Item", "Price (€)"};
     	
     	table = new DynamicJTable(this.menu, column);
     	table.setShowGrid(false);
@@ -508,7 +514,7 @@ public class GUIChef extends JFrame{
      * @return
      */
     public boolean isAlpha(String name) {
-        return name.matches("[a-zA-Z]+");
+        return name.matches("[a-z A-Z]+");
     }
     
     /**

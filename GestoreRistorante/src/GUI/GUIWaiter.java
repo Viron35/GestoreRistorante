@@ -180,7 +180,7 @@ public class GUIWaiter extends JFrame{
             list.get(i).setBounds(6, x, 90, size.height);
             list.get(i).setLocation(15, x);
             
-            JLabel price = new JLabel("â‚¬" + menu.getItemPrice(list.get(i).getText()));
+            JLabel price = new JLabel("€" + menu.getItemPrice(list.get(i).getText()));
             x+=30;
             
             buttonPanel.add(list.get(i));

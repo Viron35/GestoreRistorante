@@ -2,4 +2,6 @@ RICEVUTA
 
 Num. documento: 1
 Tavolo: 1
-Prezzo: 3.0
+Water x 2 = €3.0
+Pizza x 1 = €5.0
+Prezzo: 8.0
