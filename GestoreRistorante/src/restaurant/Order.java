@@ -20,7 +20,7 @@ public class Order implements Bidimensional, Priceable {
 	 * @param map the map to store order items
 	 * @param price the price of the order is a non negative amount
 	 */
-	public Order(HashMap<String, Integer> map, double price) {
+	public Order(HashMap<String, Integer> map, double price) throws IllegalArgumentException {
 		this.orderMap = map;
 		this.price = Formatter.getFormattedPrice(price);
 	}
@@ -37,7 +37,7 @@ public class Order implements Bidimensional, Priceable {
 	 * Gets all order items with prices and quantities and returns them in a matrix of object 
 	 * @return order items and their quantities as matrix of objects
 	 */
-	public Object[][] getItems() {
+	public Object[][] getItems() throws IllegalArgumentException {
 		return Formatter.getFormattedListFromMap(this.orderMap);
 	}
 	
@@ -68,7 +68,7 @@ public class Order implements Bidimensional, Priceable {
 	 * Resets the price of the order
 	 * @param price the price is a non negative amount
 	 */
-	protected void setPrice(double price) {
+	protected void setPrice(double price) throws IllegalArgumentException {
 		this.price = Formatter.getFormattedPrice(price);
 	}
 	
@@ -77,7 +77,7 @@ public class Order implements Bidimensional, Priceable {
 	 * @param name the name of an item 
 	 * @param quantity the quantity of an item is at least 1
 	 */
-	protected void addItem(String name, int quantity) {
+	protected void addItem(String name, int quantity) throws IllegalArgumentException {
 		if (this.orderMap.containsKey(name)) {
 			int tmp = this.orderMap.get(name);
 			this.orderMap.replace(name, Formatter.getFormattedQuantity(tmp + quantity));
@@ -92,7 +92,7 @@ public class Order implements Bidimensional, Priceable {
 	 * @param name the name of an item 
 	 * @param quantity the quantity to remove is greater than the quantity of given item
 	 */
-	protected void removeItem(String name, int quantity) {
+	protected void removeItem(String name, int quantity) throws IllegalArgumentException {
 		if (!this.orderMap.containsKey(name)) {
 			throw new IllegalArgumentException("Item not in order");
 		}
