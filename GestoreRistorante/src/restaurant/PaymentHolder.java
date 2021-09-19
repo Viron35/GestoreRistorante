@@ -20,6 +20,8 @@ public class PaymentHolder implements Bidimensional {
 		// keeps count of receipts
 		private int payCount;
 		
+		private HashMap<String, Integer> orderMap;
+		
 		/**
 		 * Constructs a new PaymentHolder object
 		 */
@@ -107,7 +109,12 @@ public class PaymentHolder implements Bidimensional {
 				writer.write("RICEVUTA\n\n");
 				writer.write("Num. documento: " + this.payCount + "\n");
 				writer.write("Tavolo: " + table + "\n");
+				for(Integer quantity: orderMap.values()){
+		            writer.write(orderMap.get(quantity) + " : " + quantity);
 				writer.write("Prezzo: " + this.getPayment(table) + "\n");
+				
+
+	
 				writer.close();
 			}
 			catch (FileNotFoundException e) {
@@ -117,5 +124,8 @@ public class PaymentHolder implements Bidimensional {
 			this.payCount++;
 			this.paymentMap.remove(table);
 		}
+		
+		public void addOrder(HashMap<String, Integer> orderMap2) {
+			this.orderMap = orderMap2;
+		}}
 
-}
